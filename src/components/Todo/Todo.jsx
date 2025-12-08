@@ -1,7 +1,13 @@
-export const Todo = ({ title, done }) => {
+export const Todo = ({ title }) => {
   return (
-    <li>
-      {title} - <button>{done ? "Done" : "In progress"}</button>
+    <li className="border px-4 py-2 flex items-center justify-between rounded">
+      <span className="capitalize text-sm">{title}</span>
+      <button
+        onClick={() => {}}
+        className="bg-white shadow px-2 py-1 rounded text-xs cursor-pointer"
+      >
+        Done
+      </button>
     </li>
   );
 };
