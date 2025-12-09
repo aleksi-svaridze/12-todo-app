@@ -13,7 +13,7 @@ export const Done = ({ id, title, removeTask, makeTaskActive }) => {
           onClick={() => makeTaskActive(id)}
           className="bg-white shadow px-2 py-1 rounded text-xs cursor-pointer"
         >
-          Un Done
+          Undo
         </button>
       </div>
     </li>

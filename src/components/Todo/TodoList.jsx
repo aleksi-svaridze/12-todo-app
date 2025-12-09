@@ -29,9 +29,8 @@ export const TodoList = ({
           <Todo
             key={listItem.id}
             title={listItem.title}
-            done={listItem.done}
             id={listItem.id}
-            action={() => makeTaskDone(listItem.id, listItem.done)}
+            action={() => makeTaskDone(listItem.id)}
           />
         ))}
       </ul>

@@ -1,7 +1,7 @@
 import { Component } from "react";
-import "./App.css";
 import { TodoList } from "./components/Todo/TodoList";
 import { DoneTasksList } from "./components/Done/DoneTasksList";
+import { v4 as uuidv4 } from "uuid";
 
 class App extends Component {
   constructor() {
@@ -24,9 +24,8 @@ class App extends Component {
     e.preventDefault();
 
     const todo = {
-      id: this.state.todoListData.length + 1,
+      id: uuidv4(),
       title: this.state.inputValue,
-      done: false,
     };
 
     if (this.state.inputValue.trim().length > 0) {
@@ -46,7 +45,6 @@ class App extends Component {
         taskObj = {
           id: task.id,
           title: task.title,
-          done: task.done,
         };
       }
     });
@@ -59,8 +57,6 @@ class App extends Component {
       todoListData,
       doneTasksList: [...this.state.doneTasksList, taskObj],
     });
-
-    console.log(this.state.doneTasksList, this.state.todoListData);
   };
 
   removeTask = (id) => {
@@ -73,16 +69,31 @@ class App extends Component {
   };
 
   makeTaskActive = (id) => {
-    console.log(id);
+    let taskObj;
+    this.state.doneTasksList.filter((task) => {
+      if (task.id === id) {
+        taskObj = {
+          id: task.id,
+          title: task.title,
+        };
+      }
+    });
+
+    const doneTasksList = this.state.doneTasksList.filter(
+      (task) => task.id !== id
+    );
+
+    this.setState({
+      todoListData: [...this.state.todoListData, taskObj],
+      doneTasksList,
+    });
   };
 
   render() {
     return (
-      <div className="container mx-auto flex justify-between mt-10">
+      <div className="container px-4 mx-auto flex flex-col md:flex-row gap-y-6 justify-between mt-10">
         <section className="bg-red-100 py-5 px-8 min-w-[48%] rounded-xl">
-          <h2 className="font-semibold text-xl border-b py-2 text-center">
-            To Do List
-          </h2>
+          <h2 className="font-semibold text-xl py-2 text-center">To Do List</h2>
           <TodoList
             inputValue={this.state.inputValue}
             onChange={this.onChange}
@@ -93,12 +104,12 @@ class App extends Component {
         </section>
 
         <section className="bg-green-100 py-5 px-8 min-w-[48%] rounded-xl">
-          <h2 className="font-semibold text-xl mb-4 border-b py-2 text-center">
-            Done Tasks List
+          <h2 className="font-semibold text-xl mb-4 py-2 text-center">
+            Finished Tasks
           </h2>
           <DoneTasksList
             doneTasksList={this.state.doneTasksList}
-            makeTaskActive={this.state.makeTaskActive}
+            makeTaskActive={this.makeTaskActive}
             removeTask={this.removeTask}
           />
         </section>

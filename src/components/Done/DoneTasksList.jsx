@@ -11,9 +11,8 @@ export const DoneTasksList = ({
         <Done
           key={listItem.id}
           title={listItem.title}
-          done={listItem.done}
           id={listItem.id}
-          action={() => makeTaskActive(listItem.done)}
+          makeTaskActive={() => makeTaskActive(listItem.id)}
           removeTask={() => removeTask(listItem.id)}
         />
       ))}
