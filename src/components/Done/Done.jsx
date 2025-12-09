@@ -2,18 +2,20 @@ export const Done = ({ id, title, removeTask, makeTaskActive }) => {
   return (
     <li className="border px-4 py-2 flex items-center justify-between rounded">
       <span className="capitalize text-sm">{title}</span>
-      <button
-        onClick={() => removeTask(id)}
-        className="bg-white shadow px-2 py-1 rounded text-xs cursor-pointer"
-      >
-        Delete
-      </button>
-      <button
-        onClick={() => makeTaskActive(id)}
-        className="bg-white shadow px-2 py-1 rounded text-xs cursor-pointer"
-      >
-        Un Done
-      </button>
+      <div className="flex items-center gap-x-2">
+        <button
+          onClick={() => removeTask(id)}
+          className="bg-white shadow px-2 py-1 rounded text-xs cursor-pointer"
+        >
+          Delete
+        </button>
+        <button
+          onClick={() => makeTaskActive(id)}
+          className="bg-white shadow px-2 py-1 rounded text-xs cursor-pointer"
+        >
+          Un Done
+        </button>
+      </div>
     </li>
   );
 };

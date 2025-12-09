@@ -25,16 +25,15 @@ export const TodoList = ({
         </button>
       </form>
       <ul className="flex flex-col gap-y-2">
-        {todoListData &&
-          todoListData.map((listItem) => (
-            <Todo
-              key={listItem.id}
-              title={listItem.title}
-              done={listItem.done}
-              id={listItem.id}
-              action={() => makeTaskDone(listItem.done, listItem.id)}
-            />
-          ))}
+        {todoListData.map((listItem) => (
+          <Todo
+            key={listItem.id}
+            title={listItem.title}
+            done={listItem.done}
+            id={listItem.id}
+            action={() => makeTaskDone(listItem.id, listItem.done)}
+          />
+        ))}
       </ul>
     </>
   );

@@ -7,11 +7,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      todoListData: [
-        { id: 1, title: "Buy milk", done: false },
-        { id: 2, title: "Buy sugar", done: false },
-        { id: 3, title: "Buy coffee", done: false },
-      ],
+      todoListData: [],
 
       doneTasksList: [],
 
@@ -43,18 +39,28 @@ class App extends Component {
     }
   };
 
-  makeTaskDone = (done, id) => {
-    const doneTask = this.state.todoListData.filter((task) => task.id === id);
-
-    doneTask[0].done = true;
+  makeTaskDone = (id) => {
+    let taskObj;
+    this.state.todoListData.filter((task) => {
+      if (task.id === id) {
+        taskObj = {
+          id: task.id,
+          title: task.title,
+          done: task.done,
+        };
+      }
+    });
 
     const todoListData = this.state.todoListData.filter(
       (task) => task.id !== id
     );
+
     this.setState({
       todoListData,
-      doneTasksList: [...this.state.doneTasksList, doneTask],
+      doneTasksList: [...this.state.doneTasksList, taskObj],
     });
+
+    console.log(this.state.doneTasksList, this.state.todoListData);
   };
 
   removeTask = (id) => {
