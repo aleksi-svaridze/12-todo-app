@@ -14,12 +14,12 @@ export const TodoList = ({
           value={inputValue}
           onChange={(e) => onChange(e.target.value)}
           type="text"
-          className="bg-white outline-none py-1 px-2 text-sm rounded"
+          className="bg-white outline-none py-1 px-2 text-sm rounded w-2/3"
         />
         <button
           onClick={(e) => addTodo(e)}
           type="submit"
-          className="bg-white cursor-pointer shadow rounded text-sm py-1 px-2 w-full font-medium"
+          className="bg-white cursor-pointer shadow rounded text-sm py-1 px-2 w-1/3 font-medium"
         >
           Add
         </button>
