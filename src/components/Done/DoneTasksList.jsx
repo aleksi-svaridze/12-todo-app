@@ -5,6 +5,7 @@ export const DoneTasksList = ({
   makeTaskActive,
   removeTask,
 }) => {
+  console.log("DoneTasksList Component");
   return (
     <ul className="flex flex-col gap-y-2">
       {doneTasksList.map((listItem) => (

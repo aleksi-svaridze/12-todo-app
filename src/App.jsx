@@ -13,6 +13,7 @@ class App extends Component {
 
       inputValue: "",
     };
+    console.log("Constructor");
   }
   onChange = (value) => {
     this.setState({
@@ -90,6 +91,7 @@ class App extends Component {
   };
 
   render() {
+    console.log("Render");
     return (
       <div className="container px-4 md:px-0 mx-auto flex flex-col md:flex-row gap-y-6 md:gap-x-6 justify-between mt-10">
         <section className="bg-red-100 py-5 px-8 min-w-[48%] rounded-xl shadow-lg self-start min-h-40">

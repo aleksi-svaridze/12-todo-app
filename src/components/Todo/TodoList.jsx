@@ -7,6 +7,7 @@ export const TodoList = ({
   todoListData,
   makeTaskDone,
 }) => {
+  console.log("TodoList Component");
   return (
     <>
       <form className="flex items-center my-4 gap-x-2">
