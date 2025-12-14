@@ -1,9 +1,9 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import { TodoList } from "./components/Todo/TodoList";
 import { DoneTasksList } from "./components/Done/DoneTasksList";
 import { v4 as uuidv4 } from "uuid";
 
-class App extends Component {
+class App extends PureComponent {
   constructor() {
     super();
     this.state = {

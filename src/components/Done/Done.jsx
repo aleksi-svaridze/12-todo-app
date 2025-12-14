@@ -1,4 +1,6 @@
-export const Done = ({ id, title, removeTask, makeTaskActive }) => {
+import React from "react";
+
+export const Done = React.memo(({ id, title, removeTask, makeTaskActive }) => {
   console.log("Done Component");
   return (
     <li className="border px-4 py-2 flex items-center justify-between rounded">
@@ -19,4 +21,4 @@ export const Done = ({ id, title, removeTask, makeTaskActive }) => {
       </div>
     </li>
   );
-};
+});
