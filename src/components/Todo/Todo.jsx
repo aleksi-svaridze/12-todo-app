@@ -1,6 +1,4 @@
-import React from "react";
-
-export const Todo = React.memo(({ title, action, id }) => {
+export const Todo = ({ title, action, id }) => {
   console.log("Todo Component");
   return (
     <li className="border px-4 py-2 flex items-center justify-between rounded">
@@ -13,4 +11,4 @@ export const Todo = React.memo(({ title, action, id }) => {
       </button>
     </li>
   );
-});
+};
