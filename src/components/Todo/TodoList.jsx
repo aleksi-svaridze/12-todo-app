@@ -1,17 +1,24 @@
-import { Todo } from "./Todo";
+import { useEffect, useRef } from "react";
+import React from "react";
+import Todo from "./Todo";
 
-export const TodoList = ({
+const TodoList = ({
   inputValue,
   onChange,
   addTodo,
   todoListData,
   makeTaskDone,
 }) => {
+  const inputRef = useRef(null);
+  useEffect(() => {
+    inputRef.current.focus();
+  });
   console.log("Todo list component");
   return (
     <>
       <form className="flex items-center my-4 gap-x-2">
         <input
+          ref={inputRef}
           value={inputValue}
           onChange={(e) => onChange(e.target.value)}
           type="text"
@@ -31,10 +38,12 @@ export const TodoList = ({
             key={listItem.id}
             title={listItem.title}
             id={listItem.id}
-            action={() => makeTaskDone(listItem.id)}
+            makeTaskDone={() => makeTaskDone(listItem.id)}
           />
         ))}
       </ul>
     </>
   );
 };
+
+export default React.memo(TodoList);

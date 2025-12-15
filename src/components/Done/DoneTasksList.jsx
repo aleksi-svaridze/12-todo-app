@@ -1,10 +1,7 @@
-import { Done } from "./Done";
+import React from "react";
+import Done from "./Done";
 
-export const DoneTasksList = ({
-  doneTasksList,
-  makeTaskActive,
-  removeTask,
-}) => {
+const DoneTasksList = ({ doneTasksList, makeTaskActive, removeTask }) => {
   console.log("Done task component");
   return (
     <ul className="flex flex-col gap-y-2">
@@ -20,3 +17,5 @@ export const DoneTasksList = ({
     </ul>
   );
 };
+
+export default React.memo(DoneTasksList);
