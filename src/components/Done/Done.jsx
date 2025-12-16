@@ -3,8 +3,8 @@ import React from "react";
 const Done = ({ id, title, removeTask, makeTaskActive }) => {
   console.log("Done Component");
   return (
-    <li className="border px-4 py-2 flex items-center justify-between rounded">
-      <span className="capitalize text-sm">{title}</span>
+    <li className="border px-4 py-2 flex items-center gap-x-2 justify-between rounded">
+      <span className="capitalize text-sm overflow-hidden">{title}</span>
       <div className="flex items-center gap-x-2">
         <button
           onClick={() => removeTask(id)}
