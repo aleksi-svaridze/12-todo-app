@@ -8,25 +8,28 @@ const App = () => {
   const [todoListData, setTodoListData] = useState([]);
   const [doneTasksList, setDoneTasksList] = useState([]);
 
-  const onChange = (value) => {
+  const onChange = useCallback((value) => {
     setInputValue(value);
-  };
+  }, []);
 
-  const addTodo = (e) => {
-    e.preventDefault();
+  const addTodo = useCallback(
+    (e) => {
+      e.preventDefault();
 
-    const todo = {
-      id: uuidv4(),
-      title: inputValue,
-    };
+      const todo = {
+        id: uuidv4(),
+        title: inputValue,
+      };
 
-    if (inputValue.trim().length > 0) {
-      setTodoListData((prevState) => [...prevState, todo]);
-      setInputValue("");
-    } else {
-      alert("Enter task");
-    }
-  };
+      if (inputValue.trim().length > 0) {
+        setTodoListData((prevState) => [...prevState, todo]);
+        setInputValue("");
+      } else {
+        alert("Enter task");
+      }
+    },
+    [inputValue]
+  );
 
   const makeTaskDone = useCallback(
     (id) => {

@@ -16,18 +16,18 @@ const TodoList = ({
   console.log("Todo list component");
   return (
     <>
-      <form className="flex items-center my-4 gap-x-2">
+      <form className="flex flex-col sm:flex-row items-center my-4 gap-y-3 sm:gap-x-2">
         <input
           ref={inputRef}
           value={inputValue}
           onChange={(e) => onChange(e.target.value)}
           type="text"
-          className="bg-white outline-none py-1 px-2 text-sm rounded w-2/3"
+          className="bg-white outline-none py-2 sm:py-1 px-2 text-sm rounded w-full sm:w-2/3"
         />
         <button
           onClick={(e) => addTodo(e)}
           type="submit"
-          className="bg-white cursor-pointer shadow rounded text-sm py-1 px-2 w-1/3 font-medium"
+          className="bg-white cursor-pointer shadow rounded text-sm py-1 px-2 w-full sm:w-1/3 font-medium"
         >
           Add
         </button>
