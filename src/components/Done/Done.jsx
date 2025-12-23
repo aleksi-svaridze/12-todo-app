@@ -1,7 +1,4 @@
-import React from "react";
-
 const Done = ({ id, title, removeTask, makeTaskActive }) => {
-  console.log("Done Component");
   return (
     <li className="border border-[#B97E6D] border-l-4 px-4 py-3 flex items-center gap-x-2 justify-between rounded">
       <span className="capitalize text-sm overflow-hidden">{title}</span>
@@ -23,4 +20,4 @@ const Done = ({ id, title, removeTask, makeTaskActive }) => {
   );
 };
 
-export default React.memo(Done);
+export default Done;

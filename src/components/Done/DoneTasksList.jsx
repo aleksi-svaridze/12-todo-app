@@ -1,10 +1,8 @@
-import React from "react";
 import Done from "./Done";
 
 const DoneTasksList = ({ doneTasksList, makeTaskActive, removeTask }) => {
-  console.log("Done task component");
   return (
-    <ul className="flex flex-col gap-y-2">
+    <ul style={{ display: "flex", flexDirection: "column", rowGap: "8px" }}>
       {doneTasksList.map((listItem) => (
         <Done
           key={listItem.id}
@@ -18,4 +16,4 @@ const DoneTasksList = ({ doneTasksList, makeTaskActive, removeTask }) => {
   );
 };
 
-export default React.memo(DoneTasksList);
+export default DoneTasksList;

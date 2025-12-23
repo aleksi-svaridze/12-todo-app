@@ -1,18 +1,12 @@
-import React from "react";
+import { Li, Span, Button } from "../../styles/styles";
 
-const Todo = ({ title, makeTaskDone, id }) => {
-  console.log("Todo Component");
+const Todo = ({ title, moveTaskToInProgress, id }) => {
   return (
-    <li className="border border-[#B97E6D] border-l-4 px-4 py-3 flex items-center gap-x-2 justify-between rounded">
-      <span className="capitalize text-sm overflow-hidden">{title}</span>
-      <button
-        onClick={() => makeTaskDone(id)}
-        className="bg-white shadow px-2 py-1 rounded text-xs cursor-pointer"
-      >
-        Done
-      </button>
-    </li>
+    <Li>
+      <Span>{title}</Span>
+      <Button onClick={() => moveTaskToInProgress(id)}>in progress</Button>
+    </Li>
   );
 };
 
-export default React.memo(Todo);
+export default Todo;

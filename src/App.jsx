@@ -2,11 +2,12 @@ import TodoList from "./components/Todo/TodoList";
 import DoneTasksList from "./components/Done/DoneTasksList";
 import { v4 as uuidv4 } from "uuid";
 import { useCallback, useState } from "react";
-import { InProgressList } from "./components/InProgress/InProgressList";
+import InProgressList from "./components/InProgress/InProgressList";
+import { Form } from "./components/form/Form";
 
 const App = () => {
   const [inputValue, setInputValue] = useState("");
-  const [todoListData, setTodoListData] = useState([]);
+  const [todoList, setTodoList] = useState([]);
   const [inProgressList, setInProgressList] = useState([]);
   const [doneTasksList, setDoneTasksList] = useState([]);
 
@@ -14,69 +15,87 @@ const App = () => {
     setInputValue(value);
   }, []);
 
-  const addTodo = useCallback(
-    (e) => {
-      e.preventDefault();
+  const addTodo = (e) => {
+    e.preventDefault();
 
-      const todo = {
-        id: uuidv4(),
-        title: inputValue,
-      };
+    const todo = {
+      id: uuidv4(),
+      title: inputValue,
+    };
 
-      if (inputValue.trim().length > 0) {
-        setTodoListData((prevState) => [...prevState, todo]);
-        setInputValue("");
-      } else {
-        alert("Enter task");
-      }
-      setTodoListCounter((prevState) => prevState++);
-    },
-    [inputValue]
-  );
+    if (inputValue.trim().length > 0) {
+      setTodoList((prevState) => [...prevState, todo]);
+      setInputValue("");
+    } else {
+      alert("Enter task");
+    }
+  };
 
-  const makeTaskDone = useCallback(
-    (id) => {
-      let taskObj;
-      todoListData.filter((task) => {
-        if (task.id === id) {
-          taskObj = {
-            id: task.id,
-            title: task.title,
-          };
-        }
-      });
-
-      setTodoListData((prevState) =>
-        prevState.filter((task) => task.id !== id)
-      );
-      setDoneTasksList((prevState) => [...prevState, taskObj]);
-    },
-    [todoListData]
-  );
-
-  const removeTask = useCallback((id) => {
+  const removeTask = (id) => {
     setDoneTasksList((prevState) => prevState.filter((task) => task.id !== id));
-  }, []);
+  };
 
-  const makeTaskActive = useCallback(
-    (id) => {
-      let taskObj;
-      doneTasksList.filter((task) => {
-        if (task.id === id) {
-          taskObj = {
-            id: task.id,
-            title: task.title,
-          };
-        }
-      });
+  const moveTaskToInProgress = (id) => {
+    let taskObj;
+    todoList.filter((task) => {
+      if (task.id === id) {
+        taskObj = {
+          id: task.id,
+          title: task.title,
+        };
+      }
+    });
+    setTodoList((prevState) => prevState.filter((task) => task.id !== id));
+    setInProgressList((prevState) => [...prevState, taskObj]);
+  };
 
-      setTodoListData((prevState) => [...prevState, taskObj]);
-      setDoneTasksList((prevState) =>
-        prevState.filter((task) => task.id !== id)
-      );
-    },
-    [doneTasksList]
-  );
+  const moveTaskToBacklog = (id) => {
+    let taskObj;
+    inProgressList.filter((task) => {
+      if (task.id === id) {
+        taskObj = {
+          id: task.id,
+          title: task.title,
+        };
+      }
+    });
+
+    setTodoList((prevState) => [...prevState, taskObj]);
+    setInProgressList((prevState) =>
+      prevState.filter((task) => task.id !== id)
+    );
+  };
+
+  const moveTaskToDone = (id) => {
+    let taskObj;
+    inProgressList.filter((task) => {
+      if (task.id === id) {
+        taskObj = {
+          id: task.id,
+          title: task.title,
+        };
+      }
+    });
+    setInProgressList((prevState) =>
+      prevState.filter((task) => task.id !== id)
+    );
+    setDoneTasksList((prevState) => [...prevState, taskObj]);
+  };
+
+  const makeTaskActive = (id) => {
+    let taskObj;
+    doneTasksList.filter((task) => {
+      if (task.id === id) {
+        taskObj = {
+          id: task.id,
+          title: task.title,
+        };
+      }
+    });
+
+    setInProgressList((prevState) => [...prevState, taskObj]);
+    setDoneTasksList((prevState) => prevState.filter((task) => task.id !== id));
+  };
 
   return (
     <div className="container px-4 md:px-0 mx-auto flex flex-col md:flex-row gap-y-6 md:gap-x-1 justify-between my-10">
@@ -84,15 +103,13 @@ const App = () => {
         <h2 className="font-semibold capitalize text-xl mb-5 pb-3 text-[#515151] border-b-2 border-b-[#B97E6D] flex items-center gap-x-2">
           Backlog
           <span className="border-l-2 border-[#D9D9D9] pl-2 h-4 leading-3.5 -mb-1.5">
-            {todoListData.length}
+            {todoList.length}
           </span>
         </h2>
+        <Form inputValue={inputValue} onChange={onChange} addTodo={addTodo} />
         <TodoList
-          inputValue={inputValue}
-          onChange={onChange}
-          addTodo={addTodo}
-          todoListData={todoListData}
-          makeTaskDone={makeTaskDone}
+          todoList={todoList}
+          moveTaskToInProgress={moveTaskToInProgress}
         />
       </section>
 
@@ -103,7 +120,11 @@ const App = () => {
             {inProgressList.length}
           </span>
         </h2>
-        <InProgressList />
+        <InProgressList
+          inProgressList={inProgressList}
+          moveTaskToBacklog={moveTaskToBacklog}
+          moveTaskToDone={moveTaskToDone}
+        />
       </section>
 
       <section className="bg-white py-5 px-8 w-full rounded-md shadow-lg md:self-start min-h-40">
