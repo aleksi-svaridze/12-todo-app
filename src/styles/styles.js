@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Ul = styled.ul`
   display: flex;
@@ -7,7 +7,8 @@ export const Ul = styled.ul`
 `;
 
 export const Li = styled.li`
-  border: 1px solid #b97e6d;
+  border-width: 1px;
+  border-style: solid;
   border-left-width: 5px;
   padding: 12px 16px;
   display: flex;
@@ -15,6 +16,9 @@ export const Li = styled.li`
   justify-content: space-between;
   border-radius: 4px;
   column-gap: 8px;
+  ${({ theme }) => css`
+    border-color: ${theme};
+  `}
 `;
 
 export const Span = styled.span`

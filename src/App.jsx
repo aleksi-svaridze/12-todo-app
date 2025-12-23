@@ -6,7 +6,6 @@ import InProgressList from "./components/InProgress/InProgressList";
 import { Form } from "./components/form/Form";
 
 const App = () => {
-  // const [theme, setTheme] = useState(["green", "red", "blue", "yellow"]);
   const [inputValue, setInputValue] = useState("");
   const [todoList, setTodoList] = useState([]);
   const [inProgressList, setInProgressList] = useState([]);
