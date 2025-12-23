@@ -1,3 +1,4 @@
 export const InProgressList = () => {
-  return <div>In Proress list</div>;
+  console.log("in progress list");
+  return <div>Hello</div>;
 };

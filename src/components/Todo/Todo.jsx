@@ -3,7 +3,7 @@ import React from "react";
 const Todo = ({ title, makeTaskDone, id }) => {
   console.log("Todo Component");
   return (
-    <li className="border px-4 py-2 flex items-center gap-x-2 justify-between rounded">
+    <li className="border border-[#B97E6D] border-l-4 px-4 py-3 flex items-center gap-x-2 justify-between rounded">
       <span className="capitalize text-sm overflow-hidden">{title}</span>
       <button
         onClick={() => makeTaskDone(id)}
