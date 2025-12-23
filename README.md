@@ -24,4 +24,4 @@
   ![დავალების სურათი](https://github.com/aleksi-svaridze/12-todo-app/blob/f426c3dc6809f1170d8b164db0d165fcce0b3b2d/src/assets/image.jpg)
 
 - გაკეთებული დავალება
-  ![]()
+  ![დავალების სურათი](https://github.com/aleksi-svaridze/12-todo-app/blob/8bdaf4ec50536e1c98dd61de7e2da5fd13c7c95e/src/assets/Screenshot%202025-12-23%20232900.png)
