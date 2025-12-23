@@ -2,7 +2,7 @@ import Done from "./Done";
 
 const DoneTasksList = ({ doneTasksList, makeTaskActive, removeTask }) => {
   return (
-    <ul style={{ display: "flex", flexDirection: "column", rowGap: "8px" }}>
+    <ul style={{ display: "flex", flexDirection: "column", rowGap: "20px" }}>
       {doneTasksList.map((listItem) => (
         <Done
           key={listItem.id}

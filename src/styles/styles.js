@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Ul = styled.ul`
   display: flex;
   flex-direction: column;
-  row-gap: 8px;
+  row-gap: 20px;
 `;
 
 export const Li = styled.li`

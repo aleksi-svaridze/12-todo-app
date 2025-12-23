@@ -6,7 +6,7 @@ const InProgressList = ({
   moveTaskToDone,
 }) => {
   return (
-    <ul style={{ display: "flex", flexDirection: "column", rowGap: "8px" }}>
+    <ul style={{ display: "flex", flexDirection: "column", rowGap: "20px" }}>
       {inProgressList.map((listItem) => (
         <InProgressItem
           key={listItem.id}

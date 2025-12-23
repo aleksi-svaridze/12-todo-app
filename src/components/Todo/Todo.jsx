@@ -4,7 +4,7 @@ const Todo = ({ title, moveTaskToInProgress, id }) => {
   return (
     <Li>
       <Span>{title}</Span>
-      <Button onClick={() => moveTaskToInProgress(id)}>in progress</Button>
+      <Button onClick={() => moveTaskToInProgress(id)}>In progress</Button>
     </Li>
   );
 };
